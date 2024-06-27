@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://dkyg1bin62443"]
+
+[ext_resource type="Texture2D" uid="uid://b318upcydrn8q" path="res://assets/UI/Green Portal Sprite Sheet.png" id="1_sm268"]
+[ext_resource type="Script" path="res://scripts/portal.gd" id="2_0xfig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pftt"]
+atlas = ExtResource("1_sm268")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llaqa"]
+atlas = ExtResource("1_sm268")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqp0k"]
+atlas = ExtResource("1_sm268")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxmpa"]
+atlas = ExtResource("1_sm268")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f2oo"]
+atlas = ExtResource("1_sm268")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87i1g"]
+atlas = ExtResource("1_sm268")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uv1d"]
+atlas = ExtResource("1_sm268")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r3wv"]
+atlas = ExtResource("1_sm268")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8l0q"]
+atlas = ExtResource("1_sm268")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3foux"]
+atlas = ExtResource("1_sm268")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xardg"]
+atlas = ExtResource("1_sm268")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghv4v"]
+atlas = ExtResource("1_sm268")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oamt"]
+atlas = ExtResource("1_sm268")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed1dd"]
+atlas = ExtResource("1_sm268")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgg5x"]
+atlas = ExtResource("1_sm268")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w33g1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pftt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llaqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqp0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxmpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f2oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87i1g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uv1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r3wv")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8l0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3foux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xardg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghv4v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oamt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed1dd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgg5x")
+}],
+"loop": false,
+"name": &"portal opening",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_438fs"]
+radius = 8.0
+height = 42.0
+
+[node name="Portal" type="Area2D"]
+collision_mask = 2
+script = ExtResource("2_0xfig")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w33g1")
+animation = &"portal opening"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_438fs")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

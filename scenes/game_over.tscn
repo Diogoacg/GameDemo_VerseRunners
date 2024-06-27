@@ -1,0 +1,189 @@
+[gd_scene load_steps=21 format=3 uid="uid://dtcsi5ohw6ou1"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_f48fx"]
+[ext_resource type="FontFile" uid="uid://bxqgehpc7d8te" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_h15rp"]
+[ext_resource type="Texture2D" uid="uid://cs1bqwblki8h8" path="res://assets/UI/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Panel/Window/Medium.png" id="2_p6bc0"]
+[ext_resource type="FontFile" uid="uid://dklkp648b30s2" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="2_sqi7f"]
+[ext_resource type="Texture2D" uid="uid://bys4tsf7vhck4" path="res://assets/UI/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Buttons/Square-Medium/Repeat/Default.png" id="5_0v27s"]
+[ext_resource type="Texture2D" uid="uid://c4mybko2ptpvj" path="res://assets/UI/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Buttons/Square-Medium/Repeat/Hover.png" id="6_muo4a"]
+[ext_resource type="Texture2D" uid="uid://ceo50rgnxdj7y" path="res://assets/UI/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Buttons/Square-Medium/Home/Default.png" id="7_07o2g"]
+[ext_resource type="Texture2D" uid="uid://digjivef8rv0r" path="res://assets/UI/Prinbles_GUI_Asset_Silent (1.0.0)/asset/png/Buttons/Square-Medium/Home/Hover.png" id="8_51e56"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h20jv"]
+texture = ExtResource("5_0v27s")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lhkwj"]
+texture = ExtResource("6_muo4a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nykpj"]
+texture = ExtResource("6_muo4a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_suqfj"]
+texture = ExtResource("6_muo4a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_77oar"]
+texture = ExtResource("7_07o2g")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_swpvk"]
+texture = ExtResource("8_51e56")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y2xjv"]
+texture = ExtResource("8_51e56")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r62rn"]
+texture = ExtResource("8_51e56")
+
+[sub_resource type="Animation" id="Animation_ng0gd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2nbaw"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uub0m"]
+resource_name = "fade_in_2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7wvv"]
+_data = {
+"RESET": SubResource("Animation_ng0gd"),
+"fade_in": SubResource("Animation_2nbaw"),
+"fade_in_2": SubResource("Animation_uub0m")
+}
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f48fx")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -304.0
+offset_top = -157.0
+offset_right = 304.0
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p6bc0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -127.0
+offset_right = 3.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_h15rp")
+theme_override_font_sizes/font_size = 48
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.0
+offset_top = -4.0
+offset_right = -69.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_sqi7f")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_h20jv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lhkwj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nykpj")
+theme_override_styles/focus = SubResource("StyleBoxTexture_suqfj")
+
+[node name="Exit" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = -328.0
+offset_right = 156.0
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_sqi7f")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxTexture_77oar")
+theme_override_styles/hover = SubResource("StyleBoxTexture_swpvk")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y2xjv")
+theme_override_styles/focus = SubResource("StyleBoxTexture_r62rn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u7wvv")
+}
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="button_down" from="PlayAgain" to="." method="_on_play_again_button_down"]
+[connection signal="button_down" from="Exit" to="." method="_on_exit_button_down"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
